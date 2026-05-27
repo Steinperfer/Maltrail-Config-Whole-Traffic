@@ -16,3 +16,22 @@ accept the download and stop it after a view secconds,
   
 4. Paste the download url in maltrail.service
 sudo nano /home/pi/maltrail/maltrail.conf
+
+#############
+```bash
+cd /home/pi
+
+git clone https://github.com
+cp /home/pi/Maltrail-Config-Whole-Traffic/pcap_fix_final.py /home/pi/
+
+# change url and the path of your maltrail
+sudo nano /etc/systemd/system/maltrail.service
+
+# Systemd
+sudo systemctl daemon-reload
+sudo systemctl start maltrail.service
+sudo systemctl enable maltrail.service
+
+sudo systemctl status maltrail.service
+```
+
