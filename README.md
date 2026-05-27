@@ -22,7 +22,7 @@ sudo nano /home/pi/maltrail/maltrail.conf
 ```bash
 cd /home/pi
 
-git clone https://github.com
+git clone https://github.com/Steinperfer/Maltrail-Config-Whole-Traffic.git
 cp /home/pi/Maltrail-Config-Whole-Traffic/pcap_fix_final.py /home/pi/
 
 # change url and the path of your maltrail
