@@ -24,7 +24,9 @@ cd /home/pi
 
 git clone https://github.com/Steinperfer/Maltrail-Config-Whole-Traffic.git
 cp /home/pi/Maltrail-Config-Whole-Traffic/pcap_fix_final.py /home/pi/
+sudo cp /home/pi/Maltrail-Config-Whole-Traffic/maltrail.service /etc/systemd/system/
 
+sudo rm -rf /home/pi/Maltrail-Config-Whole-Traffic
 # change url and the path of your maltrail
 sudo nano /etc/systemd/system/maltrail.service
 
