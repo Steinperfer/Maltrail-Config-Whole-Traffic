@@ -3,7 +3,8 @@ Maltrailconfig to get the whole traffic in your Ethernet!!!
 Only Works if you have a Fritzbox or another router with packetforwarding   
   
 
-############# Auto sid detection
+# Auto sid detection  
+  
 ```bash
 cd /home/pi
 
@@ -31,6 +32,11 @@ sudo systemctl start maltrail.service
 sudo systemctl enable maltrail.service
 
 sudo systemctl status maltrail.service
+```
+
+Test with this ping from any device in the network:
+```
+ping -c 3 136.161.101.53
 ```
   
 Delete logs older than 1 month:
