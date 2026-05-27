@@ -3,7 +3,7 @@ Maltrailconfig to get the whole traffic in your Ethernet!!!
 Only Works if you have a Fritzbox or another router with packetforwarding   
   
 
-#############
+############# Auto sid detection
 ```bash
 cd /home/pi
 
@@ -14,10 +14,15 @@ sudo cp /home/pi/Maltrail-Config-Whole-Traffic/get_sid.sh /usr/local/bin/
 
 
 sudo rm -rf /home/pi/Maltrail-Config-Whole-Traffic
+
+
+
 # change url and the path of your maltrail
 sudo nano /etc/systemd/system/maltrail.service
+
 #change password
 sudo nano /usr/local/bin/get_sid.sh
+
 
 
 # Systemd
