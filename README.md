@@ -37,4 +37,30 @@ sudo systemctl enable maltrail.service
 
 sudo systemctl status maltrail.service
 ```
+  
+Delete logs older than 1 month:
+```
+sudo nano /etc/logrotate.d/maltrail
+```
+  
+insert
+```
+/var/log/maltrail/*.log {
+    daily
+    missingok
+    rotate 30
+    compress
+    delaycompress
+    notifempty
+    create 0644 root root
+    dateext
+    dateformat -%Y%m%d
+}
+```
+  
+restart  
+```
+systemctl status logrotate.timer
+sudo systemctl restart maltrail
 
+```
