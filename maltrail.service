@@ -1,0 +1,22 @@
+#/etc/systemd/system/maltrail.service
+[Unit]
+Description=Maltrail Sensor
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/maltrail
+#ExecStartPre=/sbin/sysctl -w net.ipv4.ip_forward=1
+#ExecStart=/bin/bash -c 'arpspoof -i enxb827eb99b8a3 192.168.0.1 > /var/log/arpspoof.log 2>&1 & python3 /home/pi/maltrail/sensor.py'
+#ExecStart=/bin/bash -c 'arpspoof -i enxb827eb99b8a3 192.168.0.1 > /var/log/arpspoof.log 2>&1 & python3 /home/pi/maltrail/sensor.py & python3 /home/pi/maltrail/server.py'
+
+RestartSec=10
+Type=simple
+
+########################################### Your capture link
+ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=cefb88ghj274de40cc&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | python3 /home/pi/pcap_fix_final.py | python3 /home/pi/maltrail/sensor.py -r - & python3 /home/pi/maltrail/server.py'
+
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
