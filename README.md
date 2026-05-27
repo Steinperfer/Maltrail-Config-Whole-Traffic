@@ -77,4 +77,5 @@ accept the download and stop it after a view secconds,
 <img width="1223" height="366" alt="image" src="https://github.com/user-attachments/assets/e5b3b7a7-f6b5-4b33-8846-892130c81690" />
   
 **4. Paste the download url in maltrail.service**
+uncomment the manuel ExecStart, and comment the autosid
 sudo nano /home/pi/maltrail/maltrail.conf
