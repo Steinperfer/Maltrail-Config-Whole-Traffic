@@ -13,7 +13,7 @@ WorkingDirectory=/home/pi/maltrail
 RestartSec=10
 Type=simple
 
-
+##MANUEL
 #ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=cefb8e0274de40cc&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | python3 /home/pi/pcap_fix_final.py | python3 /home/pi/maltrail/sensor.py -r - & python3 /home/pi/maltrail/server.py'
 
 #autosid
