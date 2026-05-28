@@ -39,7 +39,9 @@ Test with this ping from any device in the network:
 ping -c 3 136.161.101.53
 ```
   
-Delete logs older than 1 month:
+Delete logs older than 1 year:  
+Avg. 0.1-0.2MB per day  
+36MB a year  
 ```
 sudo nano /etc/logrotate.d/maltrail
 ```
@@ -49,7 +51,7 @@ insert
 /var/log/maltrail/*.log {
     daily
     missingok
-    rotate 30
+    rotate 365
     compress
     delaycompress
     notifempty
