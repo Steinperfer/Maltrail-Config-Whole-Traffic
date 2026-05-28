@@ -39,6 +39,27 @@ Test with this ping from any device in the network:
 ping -c 3 136.161.101.53
 ```
   
+
+# Manaul sid:
+
+**1. got to your router**   
+http://192.168.0.1/#/cap
+"First Login, than change the URL and ad the /cap"
+  
+<img width="1420" height="804" alt="image" src="https://github.com/user-attachments/assets/3f4760d6-8eda-40b8-bebd-333fee92ab57" />
+
+**2. Select start on Routing-Interface**  
+accept the download and stop it after a view secconds,  
+
+**3. Goto your browsers download site, and copy the download url**  
+  
+<img width="1223" height="366" alt="image" src="https://github.com/user-attachments/assets/e5b3b7a7-f6b5-4b33-8846-892130c81690" />
+  
+**4. Paste the download url in maltrail.service**
+uncomment the manuel ExecStart, and comment the autosid
+sudo nano /home/pi/maltrail/maltrail.conf
+
+
 Delete logs older than 1 year:  
 Avg. 0.1-0.2MB per day  
 ~50MB a year  
@@ -68,22 +89,3 @@ sudo systemctl restart maltrail
 
 ```
 
-
-Manaul sid:
-
-**1. got to your router**   
-http://192.168.0.1/#/cap
-"First Login, than change the URL and ad the /cap"
-  
-<img width="1420" height="804" alt="image" src="https://github.com/user-attachments/assets/3f4760d6-8eda-40b8-bebd-333fee92ab57" />
-
-**2. Select start on Routing-Interface**  
-accept the download and stop it after a view secconds,  
-
-**3. Goto your browsers download site, and copy the download url**  
-  
-<img width="1223" height="366" alt="image" src="https://github.com/user-attachments/assets/e5b3b7a7-f6b5-4b33-8846-892130c81690" />
-  
-**4. Paste the download url in maltrail.service**
-uncomment the manuel ExecStart, and comment the autosid
-sudo nano /home/pi/maltrail/maltrail.conf
