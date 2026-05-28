@@ -1,4 +1,3 @@
-#/etc/systemd/system/maltrail.service
 [Unit]
 Description=Maltrail Sensor
 After=network.target
@@ -6,24 +5,28 @@ After=network.target
 [Service]
 WorkingDirectory=/home/pi/maltrail
 
-##alternitve only traffic insideout
-#ExecStartPre=/sbin/sysctl -w net.ipv4.ip_forward=1
-#ExecStart=/bin/bash -c 'arpspoof -i enxb827eb99b8a3 192.168.0.1 > /var/log/arpspoof.log 2>&1 & python3 /home/pi/maltrail/sensor.py & python3 /home/pi/maltrail/server.py'
-
+TimeoutStopSec=15
+Restart=on-failure
 RestartSec=10
 Type=simple
 
-##MANUEL
-#ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=cefb8e0274de40cc&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | python3 /home/pi/pcap_fix_final.py | python3 /home/pi/maltrail/sensor.py -r - & python3 /home/pi/maltrail/server.py'
+#Only Internal via ARP
+#ExecStartPre=/sbin/sysctl -w net.ipv4.ip_forward=1
+#ExecStart=/bin/bash -c 'arpspoof -i enxb827eb99b8a3 192.168.0.1 > /var/log/arpspoof.log 2>&1 & python3 /home/pi/maltrail/sensor.py & python3 /home/pi/maltrail/server.py'
 
-#autosid
+#Manuel SID
+#ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=cefb8e0274de40cc&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | pyth>
+
+
 ExecStartPre=/bin/bash -c 'test -f /run/maltrail_sid || /usr/local/bin/get_sid.sh'
-ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=$(cat /run/maltrail_sid)&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | python3 /home/pi/pcap_fix_final.py | python3 /home/pi/maltrail/sensor.py -r - & python3 /home/pi/maltrail/server.py'
+ExecStart=/bin/bash -c '\
+  curl -s --no-buffer \
+    "http://192.168.0.1/cgi-bin/capture_notimeout?sid=$(cat /run/maltrail_sid)&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" \
+  | python3 /home/pi/pcap_fix_final.py \
+  | python3 /home/pi/maltrail/sensor.py -r - \
+  & python3 /home/pi/maltrail/server.py'
 
-#you can also change the filter to only get SYN packets etc like you do in the Maltrailconfig capture=Start&snaplen=1600&filter=icmp%20and%20src%20host%20192.168.0.25&ifaceorminor=3-0
-#https://manpages.debian.org/buster-backports/libpcap0.8/pcap-filter.7
 
-Restart=always
 User=root
 
 [Install]
