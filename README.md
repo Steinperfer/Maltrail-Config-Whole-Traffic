@@ -41,7 +41,7 @@ ping -c 3 136.161.101.53
   
 Delete logs older than 1 year:  
 Avg. 0.1-0.2MB per day  
-36MB a year  
+~50MB a year  
 ```
 sudo nano /etc/logrotate.d/maltrail
 ```
