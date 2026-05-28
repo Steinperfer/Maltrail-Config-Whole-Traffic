@@ -1,6 +1,9 @@
 [Unit]
 Description=Maltrail Sensor
+
 After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Service]
 WorkingDirectory=/home/pi/maltrail
