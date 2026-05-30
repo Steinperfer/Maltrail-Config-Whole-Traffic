@@ -5,7 +5,7 @@ Only Works if you have a Fritzbox or another router with packetforwarding
 # Scan your whole Internet, every device, every external activity  
 # runs 24/7, without having to renew or fix anything  
   
-<img width="877" height="559" alt="image" src="https://github.com/user-attachments/assets/0a7550d3-4217-4696-9dc8-578271c10876" />
+<img width="877" height="559" alt="image" src="https://github.com/user-attachments/assets/0a7550d3-4217-4696-9dc8-578271c10876" />  
 no spoofing, no performance decline
 
 # 1. Auto SID detection  
