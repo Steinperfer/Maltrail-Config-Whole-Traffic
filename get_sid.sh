@@ -22,5 +22,5 @@ if [ -z "$CAPTURE_SID" ]; then
 fi
 
 echo "$CAPTURE_SID" > "$SID_FILE"
-chmod 600 "$SID_FILE"
+chmod 644 "$SID_FILE"
 echo "OK: $CAPTURE_SID"
