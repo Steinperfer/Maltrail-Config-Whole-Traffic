@@ -8,7 +8,7 @@ Only Works if you have a Fritzbox or another router with packetforwarding
 <img width="877" height="559" alt="image" src="https://github.com/user-attachments/assets/0a7550d3-4217-4696-9dc8-578271c10876" />
 no spoofing, no performance decline
 
-# Auto sid detection  
+# 1. Auto sid detection  
   
 ```bash
 cd /home/pi
