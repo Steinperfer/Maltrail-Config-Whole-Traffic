@@ -8,7 +8,7 @@ Only Works if you have a Fritzbox or another router with packetforwarding
 <img width="877" height="559" alt="image" src="https://github.com/user-attachments/assets/0a7550d3-4217-4696-9dc8-578271c10876" />
 no spoofing, no performance decline
 
-# 1. Auto sid detection  
+# 1. Auto SID detection  
   
 ```bash
 cd /home/pi
@@ -47,7 +47,7 @@ ping -c 3 136.161.101.53
 
 
 Alternative
-# Manaul sid:
+# Manaul SID:
 
 **1. got to your router**   
 http://192.168.0.1/#/cap
