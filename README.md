@@ -43,8 +43,10 @@ Test with this ping from any device in the network:
 ```
 ping -c 3 136.161.101.53
 ```
-  
+   
 
+
+Alternative
 # Manaul sid:
 
 **1. got to your router**   
