@@ -1,6 +1,11 @@
 # Maltrail-Config-Whole-Traffic
 Maltrailconfig to get the whole traffic in your Ethernet!!!    
-Only Works if you have a Fritzbox or another router with packetforwarding   
+Only Works if you have a Fritzbox or another router with packetforwarding     
+  
+# Scan your whole Internet, every device, every external activity  
+# run 24/7 without havong to renew or fix anything  
+  
+<img width="877" height="559" alt="image" src="https://github.com/user-attachments/assets/0a7550d3-4217-4696-9dc8-578271c10876" />
   
 
 # Auto sid detection  
