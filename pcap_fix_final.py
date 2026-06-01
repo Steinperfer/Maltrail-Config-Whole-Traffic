@@ -130,9 +130,16 @@ def main():
         eth = b'\x00' * 12 + ethertype
         pkt = eth + ip_data
 
-        out.write(struct.pack('<IIII', ts_sec, ts_usec, len(pkt), len(pkt)))
-        out.write(pkt)
-        out.flush()
+        try:
+            out.write(struct.pack('<IIII', ts_sec, ts_usec, len(pkt), len(pkt)))
+            out.write(pkt)
+            out.flush()
+        except BrokenPipeError:
+            time.sleep(10)
+            continue
+        except Exception:
+            time.sleep(5)
+            continue
 
 
 if __name__ == "__main__":
