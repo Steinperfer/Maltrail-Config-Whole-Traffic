@@ -22,11 +22,11 @@ Type=simple
 
 ExecStartPre=/bin/bash -c 'until /usr/local/bin/get_sid.sh && [ -s /run/maltrail_sid ]; do sleep 3; done'
 ExecStart=/bin/bash -c '\
+  python3 /home/pi/maltrail/server.py & \
   curl -s --no-buffer \
     "http://192.168.0.1/cgi-bin/capture_notimeout?sid=$(cat /run/maltrail_sid)&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" \
   | python3 /home/pi/pcap_fix_final.py \
-  | python3 /home/pi/maltrail/sensor.py -r - \
-  & python3 /home/pi/maltrail/server.py'
+  | python3 /home/pi/maltrail/sensor.py -r -'
 
 
 User=root
