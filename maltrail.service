@@ -1,17 +1,18 @@
 [Unit]
 Description=Maltrail Sensor
-
 After=network.target
-StartLimitIntervalSec=60
-StartLimitBurst=3
+StartLimitIntervalSec=0
+StartLimitBurst=0
+
 
 [Service]
 WorkingDirectory=/home/pi/maltrail
-
-TimeoutStopSec=15
-Restart=on-failure
-RestartSec=10
 Type=simple
+User=root
+KillMode=process
+TimeoutStopSec=30
+Restart=always
+RestartSec=10
 
 #Only Internal via ARP
 #ExecStartPre=/sbin/sysctl -w net.ipv4.ip_forward=1
@@ -20,12 +21,11 @@ Type=simple
 #Manuel SID
 #ExecStart=/bin/bash -c 'curl -s --no-buffer "http://192.168.0.1/cgi-bin/capture_notimeout?sid=cefb8e0274de40cc&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" | pyth>
 
-ExecStartPre=/bin/bash -c 'until /usr/local/bin/get_sid.sh && [ -s /run/maltrail_sid ]; do sleep 3; done'
-ExecStart=/bin/bash -c '\
-  python3 /home/pi/maltrail/server.py & \
-  curl -s --no-buffer \
-    "http://192.168.0.1/cgi-bin/capture_notimeout?sid=$(cat /run/maltrail_sid)&capture=Start&snaplen=1600&filter=&ifaceorminor=3-0" \
-  | python3 /home/pi/pcap_fix_final.py'
+ExecStart=/bin/bash -c ' \
+  pgrep -f "python3 /home/pi/maltrail/server.py" || \
+    python3 /home/pi/maltrail/server.py & \
+  until /usr/local/bin/get_sid.sh && [ -s /run/maltrail_sid ]; do sleep 3; done; \
+  exec python3 /home/pi/pcap_fix_final.py'
 
 
 User=root
