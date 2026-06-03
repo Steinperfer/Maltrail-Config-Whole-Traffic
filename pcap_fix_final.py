@@ -134,11 +134,8 @@ def main():
             out.write(struct.pack('<IIII', ts_sec, ts_usec, len(pkt), len(pkt)))
             out.write(pkt)
             out.flush()
-        except BrokenPipeError:
-            time.sleep(10)
-            continue
         except Exception:
-            time.sleep(5)
+            time.sleep(15)
             continue
 
 
